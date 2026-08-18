@@ -1,3 +1,5 @@
+
+
 dum_page= '''
 <!DOCTYPE html>
 <html>
@@ -21,11 +23,40 @@ dum_page= '''
 
     <main>
       <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
-      <button>Learn More</button>
+<!-- THIS BUTTON IS MODIFIED WITH HTMLX hx-get attribute -->
+      <button hx-get="/info" hx-swap="outerHTML" >Learn More</button>
+      <button
+      hx-get="/info"
+      hx-trigger="mouseenter[ctrlKey],click"
+      hx-target="main"
+      hx-swap="beforeend" >Learn More</button>
     </main>
   </body>
 </html>
 '''
 
+HTMX_KNOWLEDGE = [
+  'HTMX is a great alternative to React etc.',
+  'It offers a different way of loading data into your frontend web UI.',
+  'It might be especially interesting for server-side developers who are not so familiar with frontend development.',
+  "But - as you will see - it's actually also a very promising alternative to React, Angular etc.",
+  'You just have to be open for a diffent mental model.',
+  'When using HTMX you typically write way less frontend JavaScript code.',
+  "You also don't need to manage any frontend state.",
+  'Though you can always add extra JS code if needed.',
+  'And you can also combine HTMX with other libraries like AlpineJS or integrate it into React apps etc.',
+]
+
 def dummy_page()-> str:
     return dum_page
+
+def make_ul(input_list: list[str])->str:
+    # create <li> items
+    li_elements = [f"<li>{item}</li>" for item in input_list]
+
+    # join items into a single string
+    li_string = "".join(li_elements)
+
+    # wrap in <ul> tag
+    html_output = f"<ul>{li_string}</ul>"
+    return html_output
