@@ -23,7 +23,17 @@ dum_page= '''
 
     <main>
       <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
-<!-- THIS BUTTON IS MODIFIED WITH HTMLX hx-get attribute -->
+      <!-- HX POST uses value in 'name' as reference id-->
+      <form hx-post="/note">
+        <p>
+            <label for="note">Your note</label>
+            <input type="text" id="note" name="note">
+        </p>
+        <p>
+            <button>Save Note</button>
+        </p>
+    </form>
+<!-- hx-get THIS BUTTON IS MODIFIED WITH HTMLX hx-get attribute -->
       <button hx-get="/info" hx-swap="outerHTML" >Learn More</button>
       <button
       hx-get="/info"

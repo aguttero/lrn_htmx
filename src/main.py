@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status
 
 # from fastapi import Request
 from fastapi.responses import HTMLResponse
@@ -25,3 +25,9 @@ async def dummy():
 async def info():
     # return HTMLResponse(content="Placeholder for the /info request")
     return HTMLResponse(content=make_ul(HTMX_KNOWLEDGE))
+
+@app.post("/note", status_code=status.HTTP_200_OK)
+async def post_note(note_post: str):
+    # print f "note_post= {note_post}"
+    # print f "type={type(note_post)}"
+    print (note_post)
