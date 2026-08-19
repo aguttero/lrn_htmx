@@ -1,4 +1,36 @@
+dum_page_test='''
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel = "stylesheet" type="text/css" href="/static/main.css">
+    <link rel="icon" href="/static/icon.png" />
+    <title>HTMX Essentials</title>
 
+    <script src="/static/js/htmx.js" defer></script>
+  </head>
+  <body>
+    <header id="main-header">
+      <img src="/static/htmx-logo.jpg" alt="HTMX Logo" />
+      <h1>Essentials</h1>
+    </header>
+
+    <main>
+    <div id="testform">
+      <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
+      <form id="testform" hx-post="/formin/">
+        <p>
+            <label for="note">Your note</label>
+            <input type="text" id="note" name="note" required>
+        </p>
+        <p>
+            <button type="submit">Save Note</button>
+        </p>
+    </form>
+    </div>
+    </main>
+  </body>
+</html>
+'''
 
 dum_page= '''
 <!DOCTYPE html>
@@ -22,17 +54,20 @@ dum_page= '''
     </header>
 
     <main>
+    <div id="testform">
       <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
       <!-- HX POST uses value in 'name' as reference id-->
-      <form hx-post="/note">
+      <form hx-post="/formin" hx-target="#result">
         <p>
             <label for="note">Your note</label>
-            <input type="text" id="note" name="note">
+            <input type="text" id="note" name="note" required>
         </p>
         <p>
-            <button>Save Note</button>
+            <button type="submit">Save Note</button>
         </p>
-    </form>
+      </form>
+    </div>
+    <div id="result"></div>
 <!-- hx-get THIS BUTTON IS MODIFIED WITH HTMLX hx-get attribute -->
       <button hx-get="/info" hx-swap="outerHTML" >Learn More</button>
       <button

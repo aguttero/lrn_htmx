@@ -1,6 +1,9 @@
-from fastapi import FastAPI, status
+from typing import Annotated
+from fastapi import FastAPI, status, Form
 
+# from pydantic import BaseModel
 # from fastapi import Request
+
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
@@ -26,8 +29,14 @@ async def info():
     # return HTMLResponse(content="Placeholder for the /info request")
     return HTMLResponse(content=make_ul(HTMX_KNOWLEDGE))
 
-@app.post("/note", status_code=status.HTTP_200_OK)
-async def post_note(note_post: str):
-    # print f "note_post= {note_post}"
-    # print f "type={type(note_post)}"
-    print (note_post)
+@app.post("/formin", response_class=HTMLResponse)
+async def post_note(note: Annotated[str, Form()]):
+    print (f"notepost = {note}")
+    print (f"type={type(note)}")
+
+    new_list = [note]
+    print(f"new_list={new_list}")
+    output_list = new_list + HTMX_KNOWLEDGE
+    # print (output_list)
+    # return {"note_content": f"contenido={note}"}
+    return HTMLResponse(content=make_ul(output_list))
