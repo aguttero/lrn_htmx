@@ -1,76 +1,3 @@
-goals_page_html='''
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charSet="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learn HTMX</title>
-    <link rel="stylesheet" href="/static/main_07.css" />
-    <script src="/static/htmx.js" defer></script>
-  </head>
-  <body>
-    <main>
-      <h1>Manage your course goals</h1>
-      <section>
-        <form id="goal-form">
-          <div>
-            <label htmlFor="goal">Goal</label>
-            <input type="text" id="goal" name="goal" />
-          </div>
-          <button type="submit">Add goal</button>
-        </form>
-      </section>
-      <section>
-        <ul id="goals">
-        ${courseGoals.map(
-          (goal, index) => `
-          <li id="goal-${index}">
-            <span>${goal}</span>
-            <button>Remove</button>
-          </li>
-        `
-        )}
-        </ul>
-      </section>
-    </main>
-  </body>
-</html>
-'''
-
-dum_page_test='''
-<!DOCTYPE html>
-<html>
-  <head>
-    <link rel = "stylesheet" type="text/css" href="/static/main.css">
-    <link rel="icon" href="/static/icon.png" />
-    <title>HTMX Essentials</title>
-
-    <script src="/static/js/htmx.js" defer></script>
-  </head>
-  <body>
-    <header id="main-header">
-      <img src="/static/htmx-logo.jpg" alt="HTMX Logo" />
-      <h1>Essentials</h1>
-    </header>
-
-    <main>
-    <div id="testform">
-      <p>HTMX is a JavaScript library that you use without writing JavaScript code.</p>
-      <form id="testform" hx-post="/formin/">
-        <p>
-            <label for="note">Your note</label>
-            <input type="text" id="note" name="note" required>
-        </p>
-        <p>
-            <button type="submit">Save Note</button>
-        </p>
-    </form>
-    </div>
-    </main>
-  </body>
-</html>
-'''
-
 dum_page= '''
 <!DOCTYPE html>
 <html>
@@ -133,9 +60,6 @@ HTMX_KNOWLEDGE = [
 
 def dummy_page()-> str:
     return dum_page
-
-def goals_page() -> str:
-    return goals_page_html
 
 def make_ul(input_list: list[str])->str:
     # create <li> items

@@ -7,7 +7,7 @@ from fastapi import FastAPI, status, Form
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
-from .html_content import dummy_page, make_ul, HTMX_KNOWLEDGE, goals_page
+from .html_content import dummy_page, make_ul, HTMX_KNOWLEDGE
 
 app = FastAPI()
 
@@ -19,14 +19,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 async def healty():
     return {"message": "Hello World! This is Panorámix"}
 
-# Lesson 18 - Resources 07
-@app.get("/goals", response_class=HTMLResponse)
-async def dummy():
-    return HTMLResponse(content=dummy_page(), status_code=200)
 
-
-
-# First lesson
 @app.get("/dummy", response_class=HTMLResponse)
 async def dummy():
     return HTMLResponse(content=dummy_page(), status_code=200)
