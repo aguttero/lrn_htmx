@@ -53,6 +53,14 @@ async def capture_goal_item (goal: Annotated[str, Form()], request: Request):
     goal_list.append(goal)
     # goal_list.append(goal)
     print (f"goal_list = {goal_list}")
+    print(f"--- NUEVA PETICIÓN ---")
+    print(f"Método HTTP: {request.method}")     # GET, POST, etc.
+    print(f"URL completa: {request.url}")       # http://127.0.0
+    print(f"Path: {request.url.path}")  # /
+    print(f"Client: {request.client}")
+    print(f"IP del Cliente: {request.client.host}")
+    # print(f"Auth: {request.auth}")
+    print(f"Cookies: {request.cookies}")
     # return HTMLResponse(content=f"{goal_list}")
     return templates.TemplateResponse(name="goals.html",context={"goal_list":goal_list}, request=request)
 

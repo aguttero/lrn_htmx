@@ -2,7 +2,7 @@
     <main>
       <h1>Manage your course goals</h1>
       <section>
-        <form hx-post="/goalform" id="goal-form" hx-target="ul" hx-select="ul">
+        <form hx-post="/goalform" id="goal-form" hx-target="ul" hx-select="#goals">
           <div>
             <label htmlFor="goal">Goal</label>
             <input type="text" id="goal" name="goal" />
@@ -16,7 +16,7 @@
         {% if goal_list %}
             {% for item in goal_list %}
             <li id="goal-1">
-                <span>{{item}}</span>
+                <span>{{loop.index0}} {{loop.index}} {{loop.index0}} {{item}}</span>
                 <button>Remove</button>
             </li>
             {% endfor %}
