@@ -5,7 +5,7 @@ goals_page_html='''
     <meta charSet="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn HTMX</title>
-    <link rel="stylesheet" href="/static/main_07.css" />
+    <link rel="stylesheet" href="/static/main_07s18.css" />
     <script src="/static/htmx.js" defer></script>
   </head>
   <body>

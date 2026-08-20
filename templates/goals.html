@@ -1,0 +1,38 @@
+{% include 'layout_07s18.html'%}
+    <main>
+      <h1>Manage your course goals</h1>
+      <section>
+        <form hx-post="/goalform" id="goal-form" hx-target="ul" hx-select="ul">
+          <div>
+            <label htmlFor="goal">Goal</label>
+            <input type="text" id="goal" name="goal" />
+          </div>
+          <button type="submit">Add goal</button>
+        </form>
+      </section>
+      <section>
+        <div>
+          <ul id="goals">
+        {% if goal_list %}
+            {% for item in goal_list %}
+            <li id="goal-1">
+                <span>{{item}}</span>
+                <button>Remove</button>
+            </li>
+            {% endfor %}
+            <!--<li id="goal-2">-->
+                <!--<span>Goal Placeholer</span>-->
+                <!--<button>Remove</button>-->
+            <!--</li>-->
+        {% endif %}
+          </ul>
+        </div>
+        <!--<div>
+            <ul id="goals">
+            <li id="goal-1">
+                <span>Goal2 Placeholer</span>
+                <button>Remove</button>
+            </ul>
+        </div>-->
+      </section>
+    </main>
