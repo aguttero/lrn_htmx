@@ -21,10 +21,13 @@ async def healty():
 
 # Lesson 18 - Resources 07
 @app.get("/goals", response_class=HTMLResponse)
-async def dummy():
-    return HTMLResponse(content=dummy_page(), status_code=200)
+async def goals():
+    return HTMLResponse(content=goals_page(), status_code=200)
 
-
+goal_list = []
+@app.get("/addgoalitem", response_class=HTMLResponse)
+async def add_goal_item (goal: Annotated[str, Form()]):
+    print (f"input_goal = {goal}")
 
 # First lesson
 @app.get("/dummy", response_class=HTMLResponse)

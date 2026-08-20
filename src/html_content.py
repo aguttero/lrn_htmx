@@ -22,20 +22,41 @@ goals_page_html='''
       </section>
       <section>
         <ul id="goals">
-        ${courseGoals.map(
-          (goal, index) => `
-          <li id="goal-${index}">
-            <span>${goal}</span>
+          <li id="goal-1">
+            <span>Goal Placeholer</span>
             <button>Remove</button>
           </li>
-        `
-        )}
         </ul>
       </section>
     </main>
   </body>
 </html>
 '''
+
+goal_list_ul = '''
+<ul id="goals">
+  <li id="goal-1">
+    <span>Goal Placeholer</span>
+    <button>Remove</button>
+  </li>
+</ul>
+'''
+
+
+# NEXT CODE REMOVED FROM HTML
+# <section>
+#   <ul id="goals">
+#   ${courseGoals.map(
+#     (goal, index) => `
+#     <li id="goal-${index}">
+#       <span>${goal}</span>
+#       <button>Remove</button>
+#     </li>
+#   `
+#   )}
+#   </ul>
+# </section>
+
 
 dum_page_test='''
 <!DOCTYPE html>
