@@ -17,7 +17,7 @@
             {% for item in goal_list %}
             <li id="goal-1">
                 <span>{{loop.index0}} {{loop.index}} {{loop.index0}} {{item}}</span>
-                <button>Remove</button>
+                <button hx-delete="/goaldelete">Remove</button>
             </li>
             {% endfor %}
             <!--<li id="goal-2">-->
