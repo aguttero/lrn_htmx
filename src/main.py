@@ -38,17 +38,18 @@ async def healty():
     return {"message": "Hello World! This is Panorámix"}
 
 # Lesson 18 - Resources 07 + Jinja
+goal_list = []
 @app.get("/goals", response_class=HTMLResponse)
 async def goals(request: Request):
-    return templates.TemplateResponse(name="goals.html", request=request)
+    print (f"goal_list = {goal_list}")
+    return templates.TemplateResponse(name="goals.html", context={"goal_list":goal_list}, request=request)
 
 # @app.get("/goals", response_class=HTMLResponse)
 # async def goals():
 #     return HTMLResponse(content=goals_page(), status_code=200)
 
-goal_list = []
 @app.post("/goalform", response_class=HTMLResponse)
-async def capture_goal_item (goal: Annotated[str, Form()], request: Request):
+async def add_goal_item_to_list (goal: Annotated[str, Form()], request: Request):
     print (f"input_goal = {goal}")
     goal_list.append(goal)
     # goal_list.append(goal)
@@ -63,6 +64,14 @@ async def capture_goal_item (goal: Annotated[str, Form()], request: Request):
     print(f"Cookies: {request.cookies}")
     # return HTMLResponse(content=f"{goal_list}")
     return templates.TemplateResponse(name="goals.html",context={"goal_list":goal_list}, request=request)
+
+@app.delete("/goaldelete/{goal_index}", response_class=HTMLResponse)
+async def delete_goal_from_list(goal_index: int, request:Request):
+    if goal_list:
+        goal_list.pop(goal_index)
+        print (f"goal_list = {goal_list}")
+        return templates.TemplateResponse(name="goals.html",context={"goal_list":goal_list}, request=request)
+
 
 # First lesson
 @app.get("/dummy", response_class=HTMLResponse)
